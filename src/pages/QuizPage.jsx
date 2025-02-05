@@ -9,8 +9,6 @@ function QuizPage() {
     const { number: num } = useParams()
     const number = parseInt(num, 10)
 
-    console.log(number)
-
     const dispatch = useDispatch()
 
     const questions = useSelector((state) => state.quiz.questions)
@@ -19,8 +17,7 @@ function QuizPage() {
 
     const handleNextQuestion = (question, answer) => {
         const newQuestionA = { ...question, userAnswer: answer }
-        console.log(answer)
-        console.log(newQuestionA)
+
        dispatch(addAnswer(newQuestionA))
     
         if (number === questions.length - 1) {
@@ -28,7 +25,6 @@ function QuizPage() {
           return navigate('/results')
         }
         navigate(`/quizpage/${number + 1}`)
-        console.log(number)
     }
 
     useEffect(() => {
@@ -42,10 +38,9 @@ function QuizPage() {
     
         if (duration === 0) {
           handleNextQuestion(questions[number], '')
+          setDuration(30)
         }
       }, [duration])
-
-      console.log(questions[number])
 
       return (
         <QuestionCard

@@ -1,23 +1,32 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// pages/LandingPage.jsx
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { fetchQuizQuestions } from '../store/QuizSlice';
+import { fetchQuestions } from '../services/quizApi';
 import HomeCard from '../components/HomeCard';
+import { useDispatch } from 'react-redux';
+import { setQuestions } from '../features/quiz/QuizSlice';
 
 function LandingPage() {
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // Select state from Redux store
-  const { loading } = useSelector((state) => state.quiz);
 
   const handleQuizPageNavigation = () => {
     navigate('/quizpage/1');
   };
 
   useEffect(() => {
-    dispatch(fetchQuizQuestions()); // Dispatch action to fetch questions
-  }, [dispatch]);
+    getQuestions();
+  }, []);
+
+  const getQuestions = () => {
+    fetchQuestions().then((data) => {
+      if (data) {
+        dispatch(setQuestions(data));
+        setLoading(false);
+      }
+    });
+  };
 
   return (
     <HomeCard isLoading={loading} handleQuizPage={handleQuizPageNavigation} />

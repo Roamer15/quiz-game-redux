@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import fetchQuestions from '../services/quizApi'
+import fetchQuestions from '../../services/quizApi'
 
 export const fetchQuizQuestions = createAsyncThunk(
     'quiz/fetchQuestions',
@@ -32,6 +32,13 @@ const QuizSlice = createSlice({
         setAnswers: (state, action) => {
             state.questions = action.payload
         },
+        addAnswer: (state, action) => {
+            state.answers.push(action.payload)
+        },
+        resetQuiz: (state) => {
+            state.questions = [];
+            state.answers = [];
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -49,5 +56,5 @@ const QuizSlice = createSlice({
     }
 })
 
-export const {setQuestions, setAnswers} = QuizSlice.actions
+export const {setQuestions, setAnswers, addAnswer, resetQuiz} = QuizSlice.actions
 export default QuizSlice.reducer

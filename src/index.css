@@ -188,93 +188,148 @@ button:focus-visible {
   justify-content: space-around;
   margin-top: 10px;
 }
-
-.correct,
-.wrong {
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.correct {
-  background: #2ecc71;
-  color: white;
-}
-
-.correct:hover {
-  background: #27ae60;
-}
-
-.wrong {
-  background: #e74c3c;
-  color: white;
-}
-
-.wrong:hover {
-  background: #c0392b;
-}
-
-/* Center the result card */
 .result-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100%;
-  background: #f4f4f9;
-  padding: 20px;
   text-align: center;
+  padding: 20px;
 }
 
-/* Score text styling */
-.result-container h3 {
-  font-size: 1.5rem;
-  color: #2c3e50;
-  margin-bottom: 10px;
-}
-
-/* Displaying answers */
-.display {
-  background: white;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  text-align: left;
-  max-width: 500px;
-  width: 90%;
-}
-
-.display p {
-  font-size: 1rem;
-  color: #444;
-  margin: 5px 0;
-}
-
-/* Restart button */
-.btn {
+.circle-container {
   display: flex;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  justify-content: space-between;
-  border: none;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: background 0.3s ease;
+  justify-content: center;
+  margin: 20px 0;
 }
 
-.top {
-  width: 100%;
+.circle {
+  width: 120px;
+  height: 120px;
+}
+
+.pass-message {
+  color: #00ff48;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.fail-message {
+  color: #ff4444;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.performance-message {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.answers-container {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.answer-box {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #222;
+}
+
+.correct-answer {
+  border-left: 5px solid #00ff48;
+  background-color: rgba(0, 255, 72, 0.1);
+}
+
+.wrong-answer {
+  border-left: 5px solid #ff4444;
+  background-color: rgba(255, 68, 68, 0.1);
+}
+
+.correct-text {
+  color: #00ff48;
+  font-weight: bold;
+}
+
+.wrong-text {
+  color: #ff4444;
+  font-weight: bold;
 }
 
 .btn-restart {
-  background-color: #4a90e2;
-  color: #fff;
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
 }
+
+.btn-restart:hover {
+  background-color: #0056b3;
+}
+
+
+
+.circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  margin-top: 2rem;
+  width: 200px;
+  height: 200px;
+  animation: fadeTrail 1s ease-in-out infinite alternate;
+}
+
+/* Trail color animation */
+@keyframes fadeTrail {
+  from {
+      filter: brightness(100%);
+  }
+  to {
+      filter: brightness(130%);
+  }
+}
+
+/* From Uiverse.io by barisdogansutcu */ 
+svg {
+  width: 3.25em;
+  transform-origin: center;
+  animation: rotate4 2s linear infinite;
+ }
+ 
+ circle {
+  fill: none;
+  stroke: hsl(214, 97%, 59%);
+  stroke-width: 2;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: dash4 1.5s ease-in-out infinite;
+ }
+ 
+ @keyframes rotate4 {
+  100% {
+   transform: rotate(360deg);
+  }
+ }
+ 
+ @keyframes dash4 {
+  0% {
+   stroke-dasharray: 1, 200;
+   stroke-dashoffset: 0;
+  }
+ 
+  50% {
+   stroke-dasharray: 90, 200;
+   stroke-dashoffset: -35px;
+  }
+ 
+  100% {
+   stroke-dashoffset: -125px;
+  }
+ }
+ 

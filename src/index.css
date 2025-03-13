@@ -181,12 +181,23 @@ button:focus-visible {
   margin-bottom: 15px;
 }
 
+.correct {
+  background-color: #05e745;
+  color: #f4f4f9;
+}
+
+.wrong {
+  background-color: #e74c3c;
+  color: #f4f4f9;
+}
+
 /* Buttons */
 .btn {
   display: flex;
   justify-content: space-around;
   margin-top: 10px;
 }
+
 .result-container {
   text-align: center;
   padding: 20px;
